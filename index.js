@@ -40,6 +40,18 @@ const run = async () => {
       }
     });
 
+    // Post a website
+
+    app.post("/website", async (req, res) => {
+      try {
+        const result = await websiteCollection.insertOne(req.body);
+        res.send(result);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal server error" });
+      }
+    });
+
     //---------All API End here---------
   } finally {
   }
